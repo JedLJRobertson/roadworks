@@ -1,5 +1,6 @@
 package net.bbqroast.roadworks.guiStates;
 
+import com.sun.javafx.geom.Vec2f;
 import net.bbqroast.roadworks.GUIController;
 import net.bbqroast.roadworks.world.Road;
 import org.newdawn.slick.Color;
@@ -25,7 +26,7 @@ public class DrawRoad implements  IGUIState {
 
             // If road just reached valid (>1) length, add to world
             if (road.getNoVertexes() == 2)  {
-                controller.getWorld().addRoad(road);
+                controller.getWorld().getRoadNetwork().addRoad(road);
             }
         }
     }
@@ -34,5 +35,7 @@ public class DrawRoad implements  IGUIState {
     public void render(Graphics graphics, GameContainer gameContainer) {
         graphics.setColor(Color.gray);
         graphics.drawLine(road.getVertex(road.getNoVertexes() - 1).x, road.getVertex(road.getNoVertexes() - 1).y, gameContainer.getInput().getMouseX(), gameContainer.getInput().getMouseY());
+
+        controller.getWorld().getRoadNetwork().renderPotentialIntersections(road.getVertex(road.getNoVertexes() - 1), new Vec2f(gameContainer.getInput().getMouseX(), gameContainer.getInput().getMouseY()), graphics);
     }
 }

@@ -6,19 +6,17 @@ import org.newdawn.slick.Graphics;
 import java.util.LinkedList;
 
 public class World {
-    private LinkedList<Road>  roads;
+    private RoadNetwork roadNetwork;
 
     public World()  {
-        roads = new LinkedList<>();
+        roadNetwork = new RoadNetwork();
     }
 
-    public void addRoad(Road road) {
-        roads.add(road);
+    public RoadNetwork getRoadNetwork() {
+        return roadNetwork;
     }
 
     public void render(Graphics g)    {
-        for (Road road : roads) {
-            road.render(g);
-        }
+        roadNetwork.render(g);
     }
 }
