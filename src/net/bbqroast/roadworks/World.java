@@ -1,5 +1,6 @@
 package net.bbqroast.roadworks;
 
+import net.bbqroast.roadworks.world.Road;
 import org.newdawn.slick.Graphics;
 
 import java.util.LinkedList;

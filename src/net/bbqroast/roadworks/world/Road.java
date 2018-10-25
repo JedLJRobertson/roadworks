@@ -1,4 +1,4 @@
-package net.bbqroast.roadworks;
+package net.bbqroast.roadworks.world;
 
 import com.sun.javafx.geom.Vec2f;
 import org.newdawn.slick.Color;

@@ -1,5 +1,8 @@
-package net.bbqroast.roadworks;
+package net.bbqroast.roadworks.world;
 
+import net.bbqroast.roadworks.Camera;
+import net.bbqroast.roadworks.GUIController;
+import net.bbqroast.roadworks.World;
 import org.newdawn.slick.*;
 
 import java.util.logging.Level;

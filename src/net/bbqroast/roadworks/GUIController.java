@@ -1,7 +1,7 @@
 package net.bbqroast.roadworks;
 
-import net.bbqroast.roadworks.net.bbqroast.slicktest.guiStates.IGUIState;
-import net.bbqroast.roadworks.net.bbqroast.slicktest.guiStates.Standby;
+import net.bbqroast.roadworks.guiStates.IGUIState;
+import net.bbqroast.roadworks.guiStates.Standby;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 

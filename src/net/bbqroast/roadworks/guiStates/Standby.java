@@ -1,4 +1,4 @@
-package net.bbqroast.roadworks.net.bbqroast.slicktest.guiStates;
+package net.bbqroast.roadworks.guiStates;
 
 import net.bbqroast.roadworks.GUIController;
 import org.newdawn.slick.GameContainer;

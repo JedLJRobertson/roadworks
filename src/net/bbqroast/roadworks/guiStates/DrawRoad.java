@@ -1,7 +1,7 @@
-package net.bbqroast.roadworks.net.bbqroast.slicktest.guiStates;
+package net.bbqroast.roadworks.guiStates;
 
 import net.bbqroast.roadworks.GUIController;
-import net.bbqroast.roadworks.Road;
+import net.bbqroast.roadworks.world.Road;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
