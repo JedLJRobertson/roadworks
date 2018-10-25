@@ -1,5 +1,6 @@
 package net.bbqroast.roadworks;
 
+import net.bbqroast.roadworks.world.World;
 import org.newdawn.slick.Graphics;
 
 public class Camera {

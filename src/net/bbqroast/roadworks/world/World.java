@@ -1,4 +1,4 @@
-package net.bbqroast.roadworks;
+package net.bbqroast.roadworks.world;
 
 import net.bbqroast.roadworks.world.Road;
 import org.newdawn.slick.Graphics;

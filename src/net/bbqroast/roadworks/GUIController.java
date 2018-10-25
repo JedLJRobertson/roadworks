@@ -2,6 +2,7 @@ package net.bbqroast.roadworks;
 
 import net.bbqroast.roadworks.guiStates.IGUIState;
 import net.bbqroast.roadworks.guiStates.Standby;
+import net.bbqroast.roadworks.world.World;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
