@@ -10,12 +10,13 @@ public class Main extends BasicGame {
     World world;
     Camera camera;
     GUIController controller;
+    private int updateCount;
 
     public Main(String title) {
         super(title);
         world = new World();
         camera = new Camera(world);
-        controller = new GUIController(world);
+        controller = new GUIController(world, camera);
     }
 
     public static void main(String[] args)    {
@@ -39,6 +40,12 @@ public class Main extends BasicGame {
 
     @Override
     public void update(GameContainer gameContainer, int i) throws SlickException {
+        updateCount += i;
+
+        // Poll game logic at 20 ticks
+        if (updateCount >= 50) {
+            camera.poll(gameContainer);
+        }
     }
 
     @Override

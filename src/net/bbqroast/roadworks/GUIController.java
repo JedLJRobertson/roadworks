@@ -9,10 +9,13 @@ import org.newdawn.slick.Graphics;
 public class GUIController {
     World world;
     IGUIState state;
+    Camera camera;
 
 
-    public GUIController (World world)  {
+    public GUIController (World world, Camera camera)  {
         this.world = world;
+        this.camera = camera;
+
         state = new Standby(this);
     }
 
@@ -21,7 +24,7 @@ public class GUIController {
     }
 
     public void mouseReleased(int button, int x, int y)    {
-        state.mouseReleased(button, x, y);
+        state.mouseReleased(button, x, y, camera.getX(), camera.getY());
     }
 
     public World getWorld() {
@@ -29,6 +32,6 @@ public class GUIController {
     }
 
     public void render(Graphics graphics, GameContainer gameContainer) {
-        state.render(graphics, gameContainer);
+        state.render(graphics, gameContainer, camera);
     }
 }

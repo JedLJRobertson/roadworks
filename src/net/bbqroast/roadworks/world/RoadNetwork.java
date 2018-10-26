@@ -49,6 +49,7 @@ public class RoadNetwork {
                     continue;
                 }
 
+                g.drawString("hello", 30, 10);
                 // Find intersection
                 float gradient = ((float)(end.y - start.y))/((float)(end.x - start.x));
                 float gradient2 = ((float)(lend.y - lstart.y))/((float)(lend.x - lstart.x));
@@ -60,7 +61,7 @@ public class RoadNetwork {
 
 
                 // Check collision actually on line.
-                if (x < lsx || x < sx || x > lex || x > ex || y < lsy || y < sy || y > lex || y > ey)   {
+                if (x < lsx || x < sx || x > lex || x > ex || y < lsy || y < sy || y > ley || y > ey)   {
                     continue;
                 }
 
@@ -69,6 +70,7 @@ public class RoadNetwork {
             }
         }
     }
+
 
     public void addRoad(Road road)  {
         roads.add(road);
