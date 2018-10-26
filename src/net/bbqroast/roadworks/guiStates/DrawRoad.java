@@ -21,19 +21,20 @@ public class DrawRoad implements  IGUIState {
     @Override
     public void mouseReleased(int button, int x, int y, int xoff, int yoff) {
         if (button == Input.MOUSE_RIGHT_BUTTON) {
+            if (road.getNoVertexes() > 1)  {
+                controller.getWorld().getRoadNetwork().addRoad(road);
+            }
+
             controller.setState(new Standby(controller));
         } else if (button == Input.MOUSE_LEFT_BUTTON)   {
             road.extend(x - xoff, y - yoff);
-
-            // If road just reached valid (>1) length, add to world
-            if (road.getNoVertexes() == 2)  {
-                controller.getWorld().getRoadNetwork().addRoad(road);
-            }
         }
     }
 
     @Override
     public void render(Graphics graphics, GameContainer gameContainer, Camera camera) {
+        road.render(graphics);
+
         graphics.setColor(Color.gray);
         graphics.drawLine(road.getVertex(road.getNoVertexes() - 1).x, road.getVertex(road.getNoVertexes() - 1).y, gameContainer.getInput().getMouseX() - camera.getX(), gameContainer.getInput().getMouseY() - camera.getY());
 

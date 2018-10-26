@@ -9,11 +9,11 @@ import java.util.LinkedList;
 public class Road {
     private LinkedList<Vec2f> spline = new LinkedList<>();
 
-    public Road(int sx, int sy) {
+    public Road(float sx, float sy) {
         spline.add(new Vec2f(sx, sy));
     }
 
-    public void extend(int x, int y)    {
+    public void extend(float x, float y)    {
         spline.add(new Vec2f(x, y));
     }
 
