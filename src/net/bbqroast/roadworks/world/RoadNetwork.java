@@ -16,15 +16,8 @@ public class RoadNetwork {
         for (Road road : roads) {
             road.render(g);
         }
-    }
-
-    public void renderPotentialIntersections(Vec2f start, Vec2f end, Graphics g)  {
-        // Find bounding box
-        ArrayList<Intersection> intersections = findIntersectionsWith(start, end);
-
         for (Intersection intersection : intersections) {
-            g.setColor(Color.orange);
-            g.drawOval(intersection.getX() - 3, intersection.getY() - 3, 6, 6);
+            intersection.render(g);
         }
     }
 
@@ -34,8 +27,8 @@ public class RoadNetwork {
      * @param end
      * @return
      */
-    private ArrayList<Intersection> findIntersectionsWith(Vec2f start, Vec2f end)   {
-        ArrayList<Intersection> list = new ArrayList<>();
+    public ArrayList<UninsertedIntersection> findIntersectionsWith(Vec2f start, Vec2f end)   {
+        ArrayList<UninsertedIntersection> list = new ArrayList<>();
 
         // Find bounding box
         int sx = Math.min((int)start.x, (int)end.x);
@@ -87,7 +80,10 @@ public class RoadNetwork {
                     continue;
                 }
 
-                list.add(new Intersection(x, y));
+                UninsertedIntersection cross = new UninsertedIntersection(x, y);
+                cross.addConnection(road.getIntersection(i));
+                cross.addConnection(road.getIntersection(i+1));
+                list.add(cross);
             }
         }
 
@@ -110,23 +106,16 @@ public class RoadNetwork {
         return roads;
     }
 
-    public void addRoad(Road road)  {
-        Vec2f loc = road.getVertex(0);
-        Intersection cross = new Intersection(loc.x, loc.y, intersections.size());
-        Intersection prev;
-        intersections.add(cross);
-
-        for (int i = 1; i < road.getNoVertexes(); i++)  {
-            prev = cross;
-            loc = road.getVertex(i);
-
-            // Find intersections
-
-
-            cross = new Intersection(loc.x, loc.y, intersections.size());
-            cross.addConnection(prev);
-            prev.addConnection(cross);
-            intersections.add(cross);
+    public void addRoad(LinkedList<UninsertedIntersection> intersections)  {
+        Intersection pastCross = null;
+        for (UninsertedIntersection intersection : intersections)   {
+            Intersection newCross = intersection.implement(this.intersections.size());
+            if (pastCross != null)  {
+                pastCross.addConnection(newCross);
+                newCross.addConnection(pastCross);
+            }
+            this.intersections.add(newCross);
+            pastCross = newCross;
         }
     }
 }

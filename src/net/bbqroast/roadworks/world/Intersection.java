@@ -1,6 +1,8 @@
 package net.bbqroast.roadworks.world;
 
 import com.sun.javafx.geom.Vec2f;
+import org.newdawn.slick.Color;
+import org.newdawn.slick.Graphics;
 
 import java.util.Collection;
 import java.util.LinkedList;
@@ -44,6 +46,13 @@ public class Intersection {
         return id;
     }
 
+    public void render(Graphics g)  {
+        if (connections.size() > 2) {
+            g.setColor(Color.orange);
+            g.drawOval(x - 3, y - 3, 6, 6);
+        }
+    }
+
     /**
      * Returns connected roads
      * @param polled a boolean array describing what intersections have already been polled
@@ -54,8 +63,8 @@ public class Intersection {
 
         for (Intersection intersection : connections)   {
             if (!polled[intersection.getID()])   {
-                Road r = new Road(this.x, this.y);
-                r.extend(intersection.getX(), intersection.getY());
+                Road r = new Road(this.x, this.y, this);
+                r.extend(intersection.getX(), intersection.getY(), intersection);
                 roads.add(r);
             }
         }
