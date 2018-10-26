@@ -80,7 +80,7 @@ public class RoadNetwork {
                     continue;
                 }
 
-                UninsertedIntersection cross = new UninsertedIntersection(x, y);
+                UninsertedIntersection cross = new UninsertedIntersection(x, y, new RemovalRequest(road.getIntersection(i), road.getIntersection(i+1)));
                 cross.addConnection(road.getIntersection(i));
                 cross.addConnection(road.getIntersection(i+1));
                 list.add(cross);

@@ -79,4 +79,8 @@ public class Intersection {
     public Vec2f getLoc() {
         return new Vec2f(x, y);
     }
+
+    public void removeConnection(Intersection other) {
+        connections.remove(other);
+    }
 }

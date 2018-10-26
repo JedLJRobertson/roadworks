@@ -12,9 +12,16 @@ import java.util.LinkedList;
  */
 public class UninsertedIntersection extends Intersection {
     private LinkedList<Intersection> futureConnections = new LinkedList<>();
+    private RemovalRequest toRemove;
+
+    public UninsertedIntersection(float x, float y, RemovalRequest toRemove) {
+        super(x, y,-1);
+        this.toRemove = toRemove;
+    }
 
     public UninsertedIntersection(float x, float y) {
         super(x, y,-1);
+        this.toRemove = null;
     }
 
     public Intersection implement(int id) {
@@ -25,8 +32,11 @@ public class UninsertedIntersection extends Intersection {
             connection.addConnection(out);
         }
 
+        if (toRemove != null) {
+            toRemove.implement();
+        }
+
         return out;
-        // TODO: Remove old connection
     }
 
     @Override
